@@ -23,7 +23,7 @@
 //#include "./animation_data/leaf_20160830.h" //
 //#include "./animation_data/doripon.h"
 //#include "./animation_data/hoshinoki.h"
-#include "./animation_data/orange.h"
+//#include "./animation_data/orange.h"
 //#include "./animation_data/orange2.h"
 
 
@@ -264,16 +264,8 @@ int main(void) {
 
                 //STK-R UP
             case 'm':
-                //orange
-                if (frameCount % 3 == 0) {
-                    frameCount = 0;
-                    aCnt++;
-                    if (aCnt >= sizeof (frame_orange5) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_orange5) / sizeof (unsigned char) - 1;
-                    }
-                }
-                
-                setPattern(orange5[frame_orange5[aCnt]], 3);
+                //HEART REVERSE
+                setPattern(heart_rev, 1);
 
                 break;
 
