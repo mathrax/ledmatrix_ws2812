@@ -34,6 +34,8 @@
         <itemPath>animation_data/suika.h</itemPath>
         <itemPath>animation_data/teapot.h</itemPath>
         <itemPath>animation_data/orange.h</itemPath>
+        <itemPath>rope.h</itemPath>
+        <itemPath>rope2.h</itemPath>
       </logicalFolder>
       <itemPath>user.h</itemPath>
     </logicalFolder>
@@ -253,7 +255,6 @@
         <property key="UART1" value="true"/>
         <property key="UART2" value="true"/>
         <property key="USB" value="true"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>

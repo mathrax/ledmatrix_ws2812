@@ -25,7 +25,8 @@
 //#include "./animation_data/hoshinoki.h"
 //#include "./animation_data/orange.h"
 //#include "./animation_data/orange2.h"
-
+#include "rope.h"
+//#include "rope2.h"
 
 unsigned char aCnt;
 unsigned char frameCount;
@@ -48,7 +49,7 @@ void __ISR(_UART_1_VECTOR, IPL4) U1RXHandler(void) {
                 || RcvData == 'g' //STK-L LEFT
                 || RcvData == 'h' //STK-L RIGHT
                 || RcvData == 'i' //STK-L UP
-                || RcvData == 'j'
+                || RcvData == 'j' //STK-L DOWN
 
                 || RcvData == 'k' //STK-R LEFT
                 || RcvData == 'l' //STK-R RIGHT
@@ -71,6 +72,9 @@ void __ISR(_UART_1_VECTOR, IPL4) U1RXHandler(void) {
 
                         || RcvData == 'm' //STK-R UP
                         || RcvData == 'n' //STK-R DOWN
+                        
+                        || RcvData == 'j' //STK-L DOWN
+                        
                         ) {
                     frameCount = 0;
                     aCnt = 0;
@@ -116,9 +120,8 @@ int main(void) {
                 //UP
             case 'U':
 
-                //                setPattern(pencil_sample, 1);
-                myData[0] = 0;
-                deletePattern();
+                //HEART REVERSE
+                setPattern(heart_rev, 1);
                 break;
 
                 //DOWN
@@ -233,8 +236,14 @@ int main(void) {
                 //STK-L DOWN
             case 'j':
 
-                myData[0] = 0;
-                deletePattern();
+                //ROPE2
+                if (frameCount % 4 == 0) {
+                    aCnt++;
+                    if (aCnt >= sizeof (frame_rope2) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_rope2) / sizeof (unsigned char) - 1;
+                    }
+                }
+                setPattern(rope[frame_rope2[aCnt]], 2);
 
                 break;
 
@@ -264,16 +273,28 @@ int main(void) {
 
                 //STK-R UP
             case 'm':
-                //HEART REVERSE
-                setPattern(heart_rev, 1);
+                //ROPE3
+                if (frameCount % 4 == 0) {
+                    aCnt++;
+                    if (aCnt >= sizeof (frame_rope3) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_rope3) / sizeof (unsigned char) - 1;
+                    }
+                }
+                setPattern(rope[frame_rope3[aCnt]], 2);
 
                 break;
 
                 //STK-R DOWN
             case 'n':
 
-                myData[0] = 0;
-                deletePattern();
+                //ROPE
+                if (frameCount % 4 == 0) {
+                    aCnt++;
+                    if (aCnt >= sizeof (frame_rope) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_rope) / sizeof (unsigned char) - 1;
+                    }
+                }
+                setPattern(rope[frame_rope[aCnt]], 2);
 
                 break;
         }
