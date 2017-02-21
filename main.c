@@ -25,8 +25,10 @@
 //#include "./animation_data/hoshinoki.h"
 //#include "./animation_data/orange.h"
 //#include "./animation_data/orange2.h"
-#include "./animation_data/rope.h"
-//#include "rope2.h"
+//#include "./animation_data/rope.h"
+#include "./animation_data/number_5.h"
+#include "./animation_data/number_7.h"
+
 
 unsigned char aCnt;
 unsigned char frameCount;
@@ -236,14 +238,8 @@ int main(void) {
                 //STK-L DOWN
             case 'j':
 
-                //ROPE2
-                if (frameCount % 4 == 0) {
-                    aCnt++;
-                    if (aCnt >= sizeof (frame_rope2) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_rope2) / sizeof (unsigned char) - 1;
-                    }
-                }
-                setPattern(rope[frame_rope2[aCnt]], 2);
+                //number_5
+                setPattern(number_5, 2);
 
                 break;
 
@@ -273,28 +269,17 @@ int main(void) {
 
                 //STK-R UP
             case 'm':
-                //ROPE3
-                if (frameCount % 4 == 0) {
-                    aCnt++;
-                    if (aCnt >= sizeof (frame_rope3) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_rope3) / sizeof (unsigned char) - 1;
-                    }
-                }
-                setPattern(rope[frame_rope3[aCnt]], 2);
+                //DELETE
+                myData[0] = 0;
+                deletePattern();
 
                 break;
 
                 //STK-R DOWN
             case 'n':
 
-                //ROPE
-                if (frameCount % 4 == 0) {
-                    aCnt++;
-                    if (aCnt >= sizeof (frame_rope) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_rope) / sizeof (unsigned char) - 1;
-                    }
-                }
-                setPattern(rope[frame_rope[aCnt]], 2);
+                //number_7
+                setPattern(number_7, 2);
 
                 break;
         }
