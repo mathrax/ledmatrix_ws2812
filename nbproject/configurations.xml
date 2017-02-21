@@ -34,8 +34,8 @@
         <itemPath>animation_data/suika.h</itemPath>
         <itemPath>animation_data/teapot.h</itemPath>
         <itemPath>animation_data/orange.h</itemPath>
-        <itemPath>rope.h</itemPath>
-        <itemPath>rope2.h</itemPath>
+        <itemPath>animation_data/rope.h</itemPath>
+        <itemPath>animation_data/rope2.h</itemPath>
       </logicalFolder>
       <itemPath>user.h</itemPath>
     </logicalFolder>

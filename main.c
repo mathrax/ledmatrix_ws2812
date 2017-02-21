@@ -25,7 +25,7 @@
 //#include "./animation_data/hoshinoki.h"
 //#include "./animation_data/orange.h"
 //#include "./animation_data/orange2.h"
-#include "rope.h"
+#include "./animation_data/rope.h"
 //#include "rope2.h"
 
 unsigned char aCnt;
