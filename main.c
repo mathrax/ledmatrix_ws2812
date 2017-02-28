@@ -26,8 +26,9 @@
 //#include "./animation_data/orange.h"
 //#include "./animation_data/orange2.h"
 //#include "./animation_data/rope.h"
-#include "./animation_data/number_5.h"
-#include "./animation_data/number_7.h"
+//#include "./animation_data/number_5.h"
+//#include "./animation_data/number_7.h"
+#include "./animation_data/swallow.h"
 
 
 unsigned char aCnt;
@@ -237,9 +238,16 @@ int main(void) {
 
                 //STK-L DOWN
             case 'j':
-
-                //number_5
-                setPattern(number_5, 2);
+                //SWALLOW
+                if (frameCount % 4 == 0) {
+                    frameCount = 0;
+                    aCnt++;
+                    if (aCnt >= sizeof (frame_swallow) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_swallow) / sizeof (unsigned char) - 1;
+                       
+                    }
+                }
+                setPattern(swallow[frame_swallow[aCnt]], 2);
 
                 break;
 
@@ -278,8 +286,9 @@ int main(void) {
                 //STK-R DOWN
             case 'n':
 
-                //number_7
-                setPattern(number_7, 2);
+                //DELETE
+                myData[0] = 0;
+                deletePattern();
 
                 break;
         }
