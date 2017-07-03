@@ -75,9 +75,9 @@ void __ISR(_UART_1_VECTOR, IPL4) U1RXHandler(void) {
 
                         || RcvData == 'm' //STK-R UP
                         || RcvData == 'n' //STK-R DOWN
-                        
+
                         || RcvData == 'j' //STK-L DOWN
-                        
+
                         ) {
                     frameCount = 0;
                     aCnt = 0;
@@ -96,7 +96,7 @@ void __ISR(_UART_1_VECTOR, IPL4) U1RXHandler(void) {
 int main(void) {
     unsigned int i;
 
-    
+
     SYSTEMConfigPerformance(SYSCLK);
     INTEnableSystemMultiVectoredInt();
     INTEnableInterrupts();
@@ -197,7 +197,7 @@ int main(void) {
 
                 //STK-L LEFT
             case 'g':
-                
+
                 //WAVE
                 if (frameCount % 3 == 0) {
                     aCnt++;
@@ -244,7 +244,7 @@ int main(void) {
                     aCnt++;
                     if (aCnt >= sizeof (frame_swallow) / sizeof (unsigned char)) {
                         aCnt = sizeof (frame_swallow) / sizeof (unsigned char) - 1;
-                       
+
                     }
                 }
                 setPattern(swallow[frame_swallow[aCnt]], 2);
@@ -253,42 +253,37 @@ int main(void) {
 
                 //STK-R LEFT
             case 'k':
-                //SLEEPHEART
-                if (frameCount % 5 == 0) {
-                    aCnt++;
-                    if (aCnt >= sizeof (frameSleepHeart_2) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frameSleepHeart_2) / sizeof (unsigned char) - 1;
-                    }
-                }
-                setPattern(sleep_heart[frameSleepHeart_2[aCnt]], 1);
+                myData[0] = 0;
+                deletePattern();
+                //                //SLEEPHEART
+                //                if (frameCount % 5 == 0) {
+                //                    aCnt++;
+                //                    if (aCnt >= sizeof (frameSleepHeart_2) / sizeof (unsigned char)) {
+                //                        aCnt = sizeof (frameSleepHeart_2) / sizeof (unsigned char) - 1;
+                //                    }
+                //                }
+                //                setPattern(sleep_heart[frameSleepHeart_2[aCnt]], 1);
                 break;
 
                 //STK-R RIGHT
             case 'l':
-                //SLEEPHEART
-                if (frameCount % 5 == 0) {
-                    aCnt++;
-                    if (aCnt >= sizeof (frameSleepHeart_1) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frameSleepHeart_1) / sizeof (unsigned char) - 1;
-                    }
-                }
-                setPattern(sleep_heart[frameSleepHeart_1[aCnt]], 1);
+                //mini HAERT3
+                setPattern(sleep_heart[3], 1);
                 break;
 
                 //STK-R UP
             case 'm':
-                //DELETE
-                myData[0] = 0;
-                deletePattern();
+
+                //mini HAERT1
+                setPattern(sleep_heart[1], 1);
 
                 break;
 
                 //STK-R DOWN
             case 'n':
 
-                //DELETE
-                myData[0] = 0;
-                deletePattern();
+                //mini HAERT2
+                setPattern(sleep_heart[2], 1);
 
                 break;
         }
