@@ -29,6 +29,7 @@
 //#include "./animation_data/number_5.h"
 //#include "./animation_data/number_7.h"
 #include "./animation_data/swallow.h"
+#include "./animation_data/guitar_shinobi.h"
 
 
 unsigned char aCnt;
@@ -238,16 +239,8 @@ int main(void) {
 
                 //STK-L DOWN
             case 'j':
-                //SWALLOW
-                if (frameCount % 4 == 0) {
-                    frameCount = 0;
-                    aCnt++;
-                    if (aCnt >= sizeof (frame_swallow) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_swallow) / sizeof (unsigned char) - 1;
-
-                    }
-                }
-                setPattern(swallow[frame_swallow[aCnt]], 2);
+                //SHINOBI
+                setPattern(shinobi, 2);
 
                 break;
 
@@ -255,27 +248,20 @@ int main(void) {
             case 'k':
                 myData[0] = 0;
                 deletePattern();
-                //                //SLEEPHEART
-                //                if (frameCount % 5 == 0) {
-                //                    aCnt++;
-                //                    if (aCnt >= sizeof (frameSleepHeart_2) / sizeof (unsigned char)) {
-                //                        aCnt = sizeof (frameSleepHeart_2) / sizeof (unsigned char) - 1;
-                //                    }
-                //                }
-                //                setPattern(sleep_heart[frameSleepHeart_2[aCnt]], 1);
                 break;
 
                 //STK-R RIGHT
             case 'l':
-                //mini HAERT3
-                setPattern(sleep_heart[3], 1);
+
+                myData[0] = 0;
+                deletePattern();
                 break;
 
                 //STK-R UP
             case 'm':
 
-                //mini HAERT1
-                setPattern(sleep_heart[1], 1);
+                myData[0] = 0;
+                deletePattern();
 
                 break;
 
@@ -283,7 +269,7 @@ int main(void) {
             case 'n':
 
                 //mini HAERT2
-                setPattern(sleep_heart[2], 1);
+                setPattern(guitar, 1);
 
                 break;
         }
