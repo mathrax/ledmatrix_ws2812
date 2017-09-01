@@ -28,9 +28,9 @@
 //#include "./animation_data/rope.h"
 //#include "./animation_data/number_5.h"
 //#include "./animation_data/number_7.h"
-#include "./animation_data/swallow.h"
-#include "./animation_data/guitar_shinobi.h"
-
+//#include "./animation_data/swallow.h"
+//#include "./animation_data/guitar_shinobi.h"
+#include "./animation_data/ring_kushami.h"
 
 unsigned char aCnt;
 unsigned char frameCount;
@@ -125,7 +125,9 @@ int main(void) {
             case 'U':
 
                 //HEART REVERSE
-                setPattern(heart_rev, 1);
+//                setPattern(heart_rev, 1);
+                myData[0] = 0;
+                deletePattern();
                 break;
 
                 //DOWN
@@ -239,8 +241,17 @@ int main(void) {
 
                 //STK-L DOWN
             case 'j':
-                //SHINOBI
-                setPattern(shinobi, 2);
+                //KUSHAMI
+                if (frameCount % 4 == 0) {
+                    frameCount = 0;
+                    aCnt++;
+                    if (aCnt >= sizeof (frame_kusyami_bmp) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_kusyami_bmp) / sizeof (unsigned char) - 1;
+                        myData[0] = 0;
+                        deletePattern();
+                    }
+                }
+                setPattern(kusyami_bmp[frame_kusyami_bmp[aCnt]], 2);
 
                 break;
 
@@ -268,8 +279,15 @@ int main(void) {
                 //STK-R DOWN
             case 'n':
 
-                //mini HAERT2
-                setPattern(guitar, 1);
+                //RING
+                if (frameCount % 4 == 0) {
+                    frameCount = 0;
+                    aCnt++;
+                    if (aCnt >= sizeof (frame_ring5_bmp_psd) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_ring5_bmp_psd) / sizeof (unsigned char) - 1;
+                    }
+                }
+                setPattern(ring5_bmp_psd[frame_ring5_bmp_psd[aCnt]], 2);
 
                 break;
         }
