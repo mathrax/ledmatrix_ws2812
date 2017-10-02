@@ -41,6 +41,8 @@
         <itemPath>animation_data/swallow.h</itemPath>
         <itemPath>animation_data/guitar_shinobi.h</itemPath>
         <itemPath>animation_data/ring_kushami.h</itemPath>
+        <itemPath>bread_cloud_chiken.h</itemPath>
+        <itemPath>animation_data/bread_cloud_chiken.h</itemPath>
       </logicalFolder>
       <itemPath>user.h</itemPath>
     </logicalFolder>
@@ -260,6 +262,7 @@
         <property key="UART1" value="true"/>
         <property key="UART2" value="true"/>
         <property key="USB" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
@@ -574,6 +577,20 @@
                   value=""/>
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Simulator>
+      <item path="bread_cloud_chiken.h" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
     </conf>
   </confs>
 </configurationDescriptor>

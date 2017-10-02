@@ -30,7 +30,8 @@
 //#include "./animation_data/number_7.h"
 //#include "./animation_data/swallow.h"
 //#include "./animation_data/guitar_shinobi.h"
-#include "./animation_data/ring_kushami.h"
+//#include "./animation_data/ring_kushami.h"
+#include "./animation_data/bread_cloud_chiken.h"
 
 unsigned char aCnt;
 unsigned char frameCount;
@@ -112,22 +113,23 @@ int main(void) {
 
     resetAnimation();
 
+    myData[0] = -1;
     while (1) {
         frameCount++;
         switch (myData[0]) {
 
             default:
-                myData[0] = 0;
+                setPattern(break_heart, 1);
+                break;
+                
+                
+            case 0:
                 deletePattern();
                 break;
-
                 //UP
             case 'U':
 
-                //HEART REVERSE
-//                setPattern(heart_rev, 1);
-                myData[0] = 0;
-                deletePattern();
+                setPattern(mocopit,2);
                 break;
 
                 //DOWN
@@ -241,54 +243,27 @@ int main(void) {
 
                 //STK-L DOWN
             case 'j':
-                //KUSHAMI
-                if (frameCount % 4 == 0) {
-                    frameCount = 0;
-                    aCnt++;
-                    if (aCnt >= sizeof (frame_kusyami_bmp) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_kusyami_bmp) / sizeof (unsigned char) - 1;
-                        myData[0] = 0;
-                        deletePattern();
-                    }
-                }
-                setPattern(kusyami_bmp[frame_kusyami_bmp[aCnt]], 2);
-
+                setPattern(cho, 2);
                 break;
 
                 //STK-R LEFT
             case 'k':
-                myData[0] = 0;
-                deletePattern();
+                setPattern(kumo,2);
                 break;
 
                 //STK-R RIGHT
             case 'l':
-
-                myData[0] = 0;
-                deletePattern();
+                setPattern(pan,2);
                 break;
 
                 //STK-R UP
             case 'm':
-
-                myData[0] = 0;
-                deletePattern();
-
+                setPattern(swallow,2);
                 break;
 
                 //STK-R DOWN
             case 'n':
-
-                //RING
-                if (frameCount % 4 == 0) {
-                    frameCount = 0;
-                    aCnt++;
-                    if (aCnt >= sizeof (frame_ring5_bmp_psd) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_ring5_bmp_psd) / sizeof (unsigned char) - 1;
-                    }
-                }
-                setPattern(ring5_bmp_psd[frame_ring5_bmp_psd[aCnt]], 2);
-
+                setPattern(hiyoko,2);
                 break;
         }
 
