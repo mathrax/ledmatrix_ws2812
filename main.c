@@ -31,7 +31,8 @@
 //#include "./animation_data/swallow.h"
 //#include "./animation_data/guitar_shinobi.h"
 //#include "./animation_data/ring_kushami.h"
-#include "./animation_data/bread_cloud_chiken.h"
+//#include "./animation_data/bread_cloud_chiken.h"
+#include "./animation_data/5_7_mini_heart.h"
 
 unsigned char aCnt;
 unsigned char frameCount;
@@ -128,8 +129,8 @@ int main(void) {
                 break;
                 //UP
             case 'U':
-
-                setPattern(mocopit,2);
+                myData[0] = 0;
+                deletePattern();
                 break;
 
                 //DOWN
@@ -243,27 +244,28 @@ int main(void) {
 
                 //STK-L DOWN
             case 'j':
-                setPattern(cho, 2);
+                myData[0] = 0;
+                deletePattern();
                 break;
 
                 //STK-R LEFT
             case 'k':
-                setPattern(kumo,2);
+                setPattern(mini_heart2,2);
                 break;
 
                 //STK-R RIGHT
             case 'l':
-                setPattern(pan,2);
+                setPattern(mini_heart1,2);
                 break;
 
                 //STK-R UP
             case 'm':
-                setPattern(swallow,2);
+                setPattern(seven,2);
                 break;
 
                 //STK-R DOWN
             case 'n':
-                setPattern(hiyoko,2);
+                setPattern(five, 2);
                 break;
         }
 
