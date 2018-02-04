@@ -32,7 +32,9 @@
 //#include "./animation_data/guitar_shinobi.h"
 //#include "./animation_data/ring_kushami.h"
 //#include "./animation_data/bread_cloud_chiken.h"
-#include "./animation_data/5_7_mini_heart.h"
+//#include "./animation_data/5_7_mini_heart.h"
+//#include "./animation_data/zaru.h"
+#include "./animation_data/mini_heart.h"
 
 unsigned char aCnt;
 unsigned char frameCount;
@@ -244,28 +246,29 @@ int main(void) {
 
                 //STK-L DOWN
             case 'j':
-                myData[0] = 0;
-                deletePattern();
+                setPattern(mini_heart1,2);
                 break;
 
                 //STK-R LEFT
             case 'k':
-                setPattern(mini_heart2,2);
+                myData[0] = 0;
+                deletePattern();
                 break;
 
                 //STK-R RIGHT
             case 'l':
-                setPattern(mini_heart1,2);
+                myData[0] = 0;
+                deletePattern();
                 break;
 
                 //STK-R UP
             case 'm':
-                setPattern(seven,2);
+                setPattern(mini_heart3,2);
                 break;
 
                 //STK-R DOWN
             case 'n':
-                setPattern(five, 2);
+                setPattern(mini_heart2,2);
                 break;
         }
 
