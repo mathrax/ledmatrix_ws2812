@@ -34,7 +34,8 @@
 //#include "./animation_data/bread_cloud_chiken.h"
 //#include "./animation_data/5_7_mini_heart.h"
 //#include "./animation_data/zaru.h"
-#include "./animation_data/mini_heart.h"
+//#include "./animation_data/mini_heart.h"
+#include "./animation_data/fire_ganbare.h"
 
 unsigned char aCnt;
 unsigned char frameCount;
@@ -124,20 +125,21 @@ int main(void) {
             default:
                 setPattern(break_heart, 1);
                 break;
-                
-                
+
+
             case 0:
                 deletePattern();
                 break;
+
                 //UP
             case 'U':
-                myData[0] = 0;
-                deletePattern();
+                setPattern(EX, 2);
                 break;
 
                 //DOWN
                 //HANABI
             case 'D':
+
                 if (frameCount % 3 == 0) {
                     frameCount = 0;
                     aCnt++;
@@ -154,14 +156,15 @@ int main(void) {
                 //LEFT
                 //NORMAL BLINK
             case 'L':
-                if (frameCount % 16 == 0) {
-                    frameCount = 0;
-                    aCnt++;
-                    if (aCnt >= sizeof (normal_frame) / sizeof (unsigned char)) {
-                        aCnt = 0;
-                    }
-                }
-                setPattern(normal[normal_frame[aCnt]], 1);
+                //                if (frameCount % 16 == 0) {
+                //                    frameCount = 0;
+                //                    aCnt++;
+                //                    if (aCnt >= sizeof (normal_frame) / sizeof (unsigned char)) {
+                //                        aCnt = 0;
+                //                    }
+                //                }
+                //                setPattern(normal[normal_frame[aCnt]], 1);
+                setPattern(fire, 2);
                 break;
 
                 //RIGHT 
@@ -188,7 +191,9 @@ int main(void) {
                 //SANKAKU
                 //BATSU
             case 'G':
-                setPattern(batsu, 1);
+                //                setPattern(batsu, 1);
+
+                setPattern(E, 2);
                 break;
 
                 //MARU
@@ -214,6 +219,8 @@ int main(void) {
                     }
                 }
                 setPattern(wave[wave_frame[aCnt]], 1);
+
+
 
                 break;
                 //STK-L RIGHT
@@ -246,29 +253,27 @@ int main(void) {
 
                 //STK-L DOWN
             case 'j':
-                setPattern(mini_heart1,2);
+                setPattern(R, 2);
                 break;
 
                 //STK-R LEFT
             case 'k':
-                myData[0] = 0;
-                deletePattern();
+                setPattern(A, 2);
                 break;
 
                 //STK-R RIGHT
             case 'l':
-                myData[0] = 0;
-                deletePattern();
+                setPattern(B, 2);
                 break;
 
                 //STK-R UP
             case 'm':
-                setPattern(mini_heart3,2);
+                setPattern(G, 2);
                 break;
 
                 //STK-R DOWN
             case 'n':
-                setPattern(mini_heart2,2);
+                setPattern(N, 2);
                 break;
         }
 
