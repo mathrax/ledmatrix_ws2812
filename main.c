@@ -32,10 +32,10 @@
 //#include "./animation_data/guitar_shinobi.h"
 //#include "./animation_data/ring_kushami.h"
 //#include "./animation_data/bread_cloud_chiken.h"
-//#include "./animation_data/5_7_mini_heart.h"
+#include "./animation_data/5_7_mini_heart.h"
 //#include "./animation_data/zaru.h"
 //#include "./animation_data/mini_heart.h"
-#include "./animation_data/fire_ganbare.h"
+//#include "./animation_data/fire_ganbare.h"
 
 unsigned char aCnt;
 unsigned char frameCount;
@@ -156,15 +156,15 @@ int main(void) {
                 //LEFT
                 //NORMAL BLINK
             case 'L':
-                //                if (frameCount % 16 == 0) {
-                //                    frameCount = 0;
-                //                    aCnt++;
-                //                    if (aCnt >= sizeof (normal_frame) / sizeof (unsigned char)) {
-                //                        aCnt = 0;
-                //                    }
-                //                }
-                //                setPattern(normal[normal_frame[aCnt]], 1);
-                setPattern(fire, 2);
+                if (frameCount % 16 == 0) {
+                    frameCount = 0;
+                    aCnt++;
+                    if (aCnt >= sizeof (normal_frame) / sizeof (unsigned char)) {
+                        aCnt = 0;
+                    }
+                }
+                setPattern(normal[normal_frame[aCnt]], 1);
+                //                setPattern(fire, 2);
                 break;
 
                 //RIGHT 
@@ -191,9 +191,9 @@ int main(void) {
                 //SANKAKU
                 //BATSU
             case 'G':
-                //                setPattern(batsu, 1);
+                setPattern(batsu, 1);
 
-                setPattern(E, 2);
+                //                setPattern(E, 2);
                 break;
 
                 //MARU
@@ -253,27 +253,27 @@ int main(void) {
 
                 //STK-L DOWN
             case 'j':
-                setPattern(R, 2);
+                setPattern(five, 2);
                 break;
 
                 //STK-R LEFT
             case 'k':
-                setPattern(A, 2);
+                //                setPattern(A, 2);
                 break;
 
                 //STK-R RIGHT
             case 'l':
-                setPattern(B, 2);
+                //                setPattern(B, 2);
                 break;
 
                 //STK-R UP
             case 'm':
-                setPattern(G, 2);
+                //                setPattern(G, 2);
                 break;
 
                 //STK-R DOWN
             case 'n':
-                setPattern(N, 2);
+                setPattern(seven, 2);
                 break;
         }
 
