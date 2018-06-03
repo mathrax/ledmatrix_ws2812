@@ -3,6 +3,7 @@
 
 #include "./user.h"
 #include "./ledmatrix_ws2812.h"
+#include "./vsc3_keyname.h"
 
 #include "./animation_data/pattern.h"       //HEART_REV, BREAK_HEART
 #include "./animation_data/energy.h"        //ENERGY
@@ -26,44 +27,57 @@ void __ISR(_UART_1_VECTOR, IPL4) U1RXHandler(void) {
         dataPos = 0;
     } else {
         if (
-                RcvData == 'X' || RcvData == 'G'
-                || RcvData == 'O' || RcvData == 'P'
+                RcvData == BATSU
+                || RcvData == SANKAKU
+                || RcvData == MARU
+                || RcvData == SHIKAKU
 
-                || RcvData == 'U' || RcvData == 'D'
-                || RcvData == 'L' || RcvData == 'R'
+                || RcvData == UP
+                || RcvData == DOWN
+                || RcvData == LEFT
+                || RcvData == RIGHT
 
-                || RcvData == 'g' //STK-L LEFT
-                || RcvData == 'h' //STK-L RIGHT
-                || RcvData == 'i' //STK-L UP
-                || RcvData == 'j' //STK-L DOWN
+                || RcvData == STK_L_LEFT
+                || RcvData == STK_L_RIGHT
+                || RcvData == STK_L_UP
+                || RcvData == STK_L_DOWN
 
-                || RcvData == 'k' //STK-R LEFT
-                || RcvData == 'l' //STK-R RIGHT
-                || RcvData == 'm' //STK-R UP
-                || RcvData == 'n' //STK-R DOWN
+                || RcvData == STK_R_LEFT
+                || RcvData == STK_R_RIGHT
+                || RcvData == STK_R_UP
+                || RcvData == STK_R_DOWN
 
 
                 || RcvData == 'a' //L1
                 || RcvData == 'b' //R1
                 || RcvData == 'c' //L2
                 || RcvData == 'd' //R2
+
                 ) {
 
             if (lastData != RcvData) {
                 myData[dataPos] = RcvData;
 
-                if (RcvData == 'k' || RcvData == 'l' || RcvData == 'h' || RcvData == 'i' || RcvData == 'g'
-                        || RcvData == 'U' || RcvData == 'D' || RcvData == 'L' || RcvData == 'R'
-                        || RcvData == 'X'
+                if (RcvData == UP
+                        || RcvData == DOWN
+                        || RcvData == LEFT
+                        || RcvData == RIGHT
+                        || RcvData == BATSU
 
-                        || RcvData == 'm' //STK-R UP
-                        || RcvData == 'n' //STK-R DOWN
-                        || RcvData == 'g' //STK-L LEFT
-                        || RcvData == 'j' //STK-L DOWN
+                        || RcvData == STK_L_LEFT
+                        || RcvData == STK_L_RIGHT
+                        || RcvData == STK_L_UP
+                        || RcvData == STK_L_DOWN
+
+                        || RcvData == STK_R_LEFT
+                        || RcvData == STK_R_RIGHT
+                        || RcvData == STK_R_UP
+                        || RcvData == STK_R_DOWN
 
                         ) {
                     frameCount = 0;
                     aCnt = 0;
+
                 } else {
                     deletePattern();
                 }
@@ -108,16 +122,17 @@ int main(void) {
                 deletePattern();
                 break;
 
-                //UP
-            case 'U':
-                //
+
+            case UP:
+                //SHINOBI
+                setPattern(shinobi, 2);
 
                 break;
 
-                //DOWN
-                //HANABI
-            case 'D':
 
+
+            case DOWN:
+                //HANABI
                 if (frameCount % 3 == 0) {
                     frameCount = 0;
                     aCnt++;
@@ -131,8 +146,8 @@ int main(void) {
                 break;
 
 
-                //LEFT
-            case 'L':
+
+            case LEFT:
                 //NORMAL BLINK
                 if (frameCount % 16 == 0) {
                     frameCount = 0;
@@ -144,8 +159,7 @@ int main(void) {
                 setPattern(normal_blink[frame_normal_blink[aCnt]], 2);
                 break;
 
-                //RIGHT 
-            case 'R':
+            case RIGHT:
                 //BROKEN BLINK
                 if (frameCount % 3 == 0) {
                     frameCount = 0;
@@ -158,34 +172,34 @@ int main(void) {
                 setPattern(broken[frame_broken[aCnt]], 2);
                 break;
 
-                //BATSU
+
+
+            case BATSU:
                 //DELETE
-            case 'X':
                 myData[0] = 0;
                 deletePattern();
                 break;
 
-                //SANKAKU
-            case 'G':
+
+            case SANKAKU:
                 //BATSU
                 setPattern(batsu, 1);
                 break;
 
-                //MARU
-            case 'O':
+
+            case MARU:
                 //HATENA?
                 setPattern(hatena, 1);
                 break;
 
-                //SIKAKU
-            case 'P':
+
+            case SHIKAKU:
                 //BREAK HEART
                 setPattern(break_heart, 1);
                 break;
 
-                //STK-L LEFT
-            case 'g':
 
+            case STK_L_LEFT:
                 //WAVE
                 if (frameCount % 3 == 0) {
                     aCnt++;
@@ -194,12 +208,12 @@ int main(void) {
                     }
                 }
                 setPattern(wave[frame_wave[aCnt]], 1);
-
-
                 break;
-                //STK-L RIGHT
+
+
+
+            case STK_L_RIGHT:
                 //ENERGY
-            case 'h':
                 if (frameCount % 4 == 0) {
                     frameCount = 0;
                     aCnt++;
@@ -210,9 +224,9 @@ int main(void) {
                 setPattern(energy[frame_energy[aCnt]], 2);
                 break;
 
-                //STK-L UP
+
+            case STK_L_UP:
                 //START UP
-            case 'i':
                 if (frameCount % 4 == 0) {
                     frameCount = 0;
                     aCnt++;
@@ -227,32 +241,27 @@ int main(void) {
                 setPattern(startup[frame_startup[aCnt]], 2);
                 break;
 
-                //STK-L DOWN
-            case 'j':
-                //SHINOBI
-                setPattern(shinobi, 2);
+
+            case STK_L_DOWN:
                 break;
 
-                //STK-R LEFT
-            case 'k':
+
+            case STK_R_LEFT:
                 //ONPU1
                 setPattern(onpu1, 2);
                 break;
 
-                //STK-R RIGHT
-            case 'l':
+            case STK_R_RIGHT:
                 //ONPU0
                 setPattern(onpu0, 2);
                 break;
 
-                //STK-R UP
-            case 'm':
+            case STK_R_UP:
                 //ONPU2
                 setPattern(onpu2, 2);
                 break;
 
-                //STK-R DOWN
-            case 'n':
+            case STK_R_DOWN:
                 //GUITAR
                 setPattern(guitar, 2);
                 break;

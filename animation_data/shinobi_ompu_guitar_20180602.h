@@ -343,7 +343,7 @@ const unsigned char guitar[][768] = {
 };
 
 
-#endif /* _EXAMPLE_FILE_NAME_H */
+#endif /* _SHINOBI_ONPU_GUITAR_20180602_H */
 
 /* *****************************************************************************
  End of File

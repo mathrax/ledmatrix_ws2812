@@ -5,18 +5,12 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="animation_data" projectFiles="true">
-        <itemPath>animation_data/animationA.h</itemPath>
-        <itemPath>animation_data/animationB.h</itemPath>
         <itemPath>animation_data/animationC.h</itemPath>
-        <itemPath>animation_data/animationD.h</itemPath>
         <itemPath>animation_data/animationE.h</itemPath>
-        <itemPath>animation_data/animationF.h</itemPath>
         <itemPath>animation_data/animationG.h</itemPath>
         <itemPath>animation_data/animationH.h</itemPath>
         <itemPath>animation_data/animationI.h</itemPath>
-        <itemPath>animation_data/animationJ.h</itemPath>
         <itemPath>animation_data/animationK.h</itemPath>
-        <itemPath>animation_data/animationL.h</itemPath>
         <itemPath>animation_data/animationM.h</itemPath>
         <itemPath>animation_data/cho2.h</itemPath>
         <itemPath>animation_data/chulip.h</itemPath>
@@ -47,8 +41,15 @@
         <itemPath>animation_data/mini_heart.h</itemPath>
         <itemPath>animation_data/fire_ganbare.h</itemPath>
         <itemPath>animation_data/shinobi_ompu_guitar_20180602.h</itemPath>
+        <itemPath>animation_data/energy.h</itemPath>
+        <itemPath>animation_data/broken.h</itemPath>
+        <itemPath>animation_data/normal_blink.h</itemPath>
+        <itemPath>animation_data/startup.h</itemPath>
+        <itemPath>animation_data/wave.h</itemPath>
+        <itemPath>animation_data/hanabi.h</itemPath>
       </logicalFolder>
       <itemPath>user.h</itemPath>
+      <itemPath>vsc3_keyname.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerFiles"
                    displayName="Linker Files"
@@ -272,6 +273,7 @@
         <property key="UART1" value="true"/>
         <property key="UART2" value="true"/>
         <property key="USB" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
