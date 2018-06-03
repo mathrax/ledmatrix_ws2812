@@ -200,28 +200,28 @@ int main(void) {
 
 
             case STK_L_LEFT:
-                //WAVE
-                if (frameCount % 3 == 0) {
+                //ONPU0_1
+                if (frameCount % 16 == 0) {
                     aCnt++;
-                    if (aCnt >= sizeof (frame_wave) / sizeof (unsigned char)) {
+                    if (aCnt >= sizeof (frame_onpu0_1) / sizeof (unsigned char)) {
                         aCnt = 0;
                     }
                 }
-                setPattern(wave[frame_wave[aCnt]], 1);
+                setPattern(onpu0_1[frame_onpu0_1[aCnt]], 1);
                 break;
 
 
 
             case STK_L_RIGHT:
-                //ENERGY
-                if (frameCount % 4 == 0) {
+                //ONPU2_3
+                if (frameCount % 16 == 0) {
                     frameCount = 0;
                     aCnt++;
-                    if (aCnt >= sizeof (frame_energy) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_energy) / sizeof (unsigned char) - 1;
+                    if (aCnt >= sizeof (frame_onpu2_3) / sizeof (unsigned char)) {
+                        aCnt = 0;
                     }
                 }
-                setPattern(energy[frame_energy[aCnt]], 2);
+                setPattern(onpu2_3[frame_onpu2_3[aCnt]], 2);
                 break;
 
 
@@ -243,6 +243,8 @@ int main(void) {
 
 
             case STK_L_DOWN:
+                //GUITAR
+                setPattern(guitar, 2);
                 break;
 
 
@@ -262,8 +264,8 @@ int main(void) {
                 break;
 
             case STK_R_DOWN:
-                //GUITAR
-                setPattern(guitar, 2);
+                //ONPU3
+                setPattern(onpu3, 2);
                 break;
         }
 
