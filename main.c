@@ -12,8 +12,10 @@
 #include "./animation_data/startup.h"       //STARTUP
 #include "./animation_data/wave.h"          //WAVE
 #include "./animation_data/hanabi.h"        //HANABI
+#include "./animation_data/sleep_heart.h"   //SLEEP HEART
+#include "./animation_data/star.h"          //STAR
 
-#include "./animation_data/shinobi_ompu_guitar_20180602.h"
+//#include "./animation_data/shinobi_ompu_guitar_20180602.h"
 
 unsigned char aCnt;
 unsigned char frameCount;
@@ -124,8 +126,8 @@ int main(void) {
 
 
             case UP:
-                //SHINOBI
-                setPattern(shinobi, 2);
+                //STAR
+                setPattern(star[0], 2);
 
                 break;
 
@@ -200,28 +202,28 @@ int main(void) {
 
 
             case STK_L_LEFT:
-                //ONPU0_1
-                if (frameCount % 16 == 0) {
+                //WAVE
+                if (frameCount % 3 == 0) {
                     aCnt++;
-                    if (aCnt >= sizeof (frame_onpu0_1) / sizeof (unsigned char)) {
+                    if (aCnt >= sizeof (frame_wave) / sizeof (unsigned char)) {
                         aCnt = 0;
                     }
                 }
-                setPattern(onpu0_1[frame_onpu0_1[aCnt]], 1);
+                setPattern(wave[frame_wave[aCnt]], 2);
                 break;
 
 
 
             case STK_L_RIGHT:
-                //ONPU2_3
-                if (frameCount % 16 == 0) {
+                //ENERGY
+                if (frameCount % 4 == 0) {
                     frameCount = 0;
                     aCnt++;
-                    if (aCnt >= sizeof (frame_onpu2_3) / sizeof (unsigned char)) {
-                        aCnt = 0;
+                    if (aCnt >= sizeof (frame_energy) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_energy) / sizeof (unsigned char) - 1;
                     }
                 }
-                setPattern(onpu2_3[frame_onpu2_3[aCnt]], 2);
+                setPattern(energy[frame_energy[aCnt]], 2);
                 break;
 
 
@@ -243,29 +245,41 @@ int main(void) {
 
 
             case STK_L_DOWN:
-                //GUITAR
-                setPattern(guitar, 2);
+                //SLEEP_HEART 1
+                setPattern(sleep_heart[1], 2);
                 break;
 
 
             case STK_R_LEFT:
-                //ONPU1
-                setPattern(onpu1, 2);
+                //STAR_FAST
+                if (frameCount % 4 == 0) {
+                    aCnt++;
+                    if (aCnt >= sizeof (frame_star) / sizeof (unsigned char)) {
+                        aCnt = 0;
+                    }
+                }
+                setPattern(star[frame_star[aCnt]], 2);
                 break;
 
             case STK_R_RIGHT:
-                //ONPU0
-                setPattern(onpu0, 2);
+                //STAR_SLOW
+                if (frameCount % 2 == 0) {
+                    aCnt++;
+                    if (aCnt >= sizeof (frame_star) / sizeof (unsigned char)) {
+                        aCnt = 0;
+                    }
+                }
+                setPattern(star[frame_star[aCnt]], 2);
                 break;
 
             case STK_R_UP:
-                //ONPU2
-                setPattern(onpu2, 2);
+                //SLEEP_HEART 3
+                setPattern(sleep_heart[3], 2);
                 break;
 
             case STK_R_DOWN:
-                //ONPU3
-                setPattern(onpu3, 2);
+                //SLEEP_HEART 2
+                setPattern(sleep_heart[2], 2);
                 break;
         }
 

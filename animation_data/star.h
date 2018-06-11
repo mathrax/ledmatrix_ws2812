@@ -7,7 +7,7 @@
 
 #ifndef STAR_H
 #define	STAR_H
-const unsigned char frameStar[]={
+const unsigned char frame_star[]={
     0,1,2,3,
 };
 const unsigned char star[][768]={
