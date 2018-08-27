@@ -14,6 +14,9 @@
 #include "./animation_data/hanabi.h"        //HANABI
 #include "./animation_data/sleep_heart.h"   //SLEEP HEART
 #include "./animation_data/star.h"          //STAR
+#include "./animation_data/onion.h"         //ONION
+#include "./animation_data/wakusei.h"         //WAKUSEI
+#include "./animation_data/cup.h"         //CUP
 
 //#include "./animation_data/shinobi_ompu_guitar_20180602.h"
 
@@ -251,35 +254,30 @@ int main(void) {
 
 
             case STK_R_LEFT:
-                //STAR_FAST
+                //ONION
                 if (frameCount % 4 == 0) {
+                    frameCount = 0;
                     aCnt++;
-                    if (aCnt >= sizeof (frame_star) / sizeof (unsigned char)) {
-                        aCnt = 0;
+                    if (aCnt >= sizeof (frame_onion_anime_BMP) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_onion_anime_BMP) / sizeof (unsigned char) - 1;
                     }
                 }
-                setPattern(star[frame_star[aCnt]], 2);
+                setPattern(onion_anime_BMP[frame_onion_anime_BMP[aCnt]], 2);
                 break;
 
             case STK_R_RIGHT:
-                //STAR_SLOW
-                if (frameCount % 2 == 0) {
-                    aCnt++;
-                    if (aCnt >= sizeof (frame_star) / sizeof (unsigned char)) {
-                        aCnt = 0;
-                    }
-                }
-                setPattern(star[frame_star[aCnt]], 2);
+                //CUP
+                setPattern(cup, 2);
                 break;
 
             case STK_R_UP:
-                //SLEEP_HEART 3
-                setPattern(sleep_heart[3], 2);
+                //WAKUSEI 1
+                setPattern(wakusei_1, 2);
                 break;
 
             case STK_R_DOWN:
-                //SLEEP_HEART 2
-                setPattern(sleep_heart[2], 2);
+                //WAKUSEI 2
+                setPattern(wakusei_2, 2);
                 break;
         }
 
