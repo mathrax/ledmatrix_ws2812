@@ -213,7 +213,7 @@ int main(void) {
 
             case SHIKAKU:
                 //BREAK HEART
-                setPattern(break_heart, 1);
+                setPattern(break_heart, 2);
                 break;
 
 
@@ -249,12 +249,12 @@ int main(void) {
 
             case STK_R_RIGHT:
                 //SMALL HEART
-                setPattern(sleep_heart[frameSleepHeart_1[0]], 2);
+                setPattern(sleep_heart[frameSleepHeart_1[2]], 2);
                 break;
 
             case STK_R_UP:
                 //MIDDLE HEART
-                setPattern(sleep_heart[frameSleepHeart_1[2]], 2);
+                setPattern(sleep_heart[frameSleepHeart_1[1]], 2);
                 break;
 
             case STK_R_DOWN:
