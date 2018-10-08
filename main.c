@@ -6,17 +6,20 @@
 #include "./vsc3_keyname.h"
 
 #include "./animation_data/pattern.h"       //HEART_REV, BREAK_HEART
-#include "./animation_data/energy.h"        //ENERGY
+//#include "./animation_data/energy.h"        //ENERGY
 #include "./animation_data/broken.h"        //BROKEN
-#include "./animation_data/normal_blink.h"  //NOAMRL_BLINK
+//#include "./animation_data/normal_blink.h"  //NOAMRL_BLINK
 #include "./animation_data/startup.h"       //STARTUP
-#include "./animation_data/wave.h"          //WAVE
+//#include "./animation_data/wave.h"          //WAVE
 #include "./animation_data/hanabi.h"        //HANABI
 #include "./animation_data/sleep_heart.h"   //SLEEP HEART
-#include "./animation_data/star.h"          //STAR
-#include "./animation_data/onion.h"         //ONION
-#include "./animation_data/wakusei.h"         //WAKUSEI
-#include "./animation_data/cup.h"         //CUP
+//#include "./animation_data/star.h"          //STAR
+//#include "./animation_data/onion.h"         //ONION
+//#include "./animation_data/wakusei.h"       //WAKUSEI
+//#include "./animation_data/cup.h"           //CUP
+#include "./animation_data/number_0-5.h"    //
+#include "./animation_data/clock_anime.h"   //
+
 
 //#include "./animation_data/shinobi_ompu_guitar_20180602.h"
 
@@ -129,9 +132,19 @@ int main(void) {
 
 
             case UP:
-                //STAR
-                setPattern(star[0], 2);
+                //START UP
+                if (frameCount % 4 == 0) {
+                    frameCount = 0;
+                    aCnt++;
+                    if (aCnt >= sizeof (frame_startup) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_startup) / sizeof (unsigned char) - 1;
 
+                        //After playing, DELETE
+                        myData[0] = 0;
+                        deletePattern();
+                    }
+                }
+                setPattern(startup[frame_startup[aCnt]], 2);
                 break;
 
 
@@ -154,14 +167,14 @@ int main(void) {
 
             case LEFT:
                 //NORMAL BLINK
-                if (frameCount % 16 == 0) {
+                if (frameCount % 4 == 0) {
                     frameCount = 0;
                     aCnt++;
-                    if (aCnt >= sizeof (frame_normal_blink) / sizeof (unsigned char)) {
+                    if (aCnt >= sizeof (frame_clock_anime) / sizeof (unsigned char)) {
                         aCnt = 0;
                     }
                 }
-                setPattern(normal_blink[frame_normal_blink[aCnt]], 2);
+                setPattern(clock_anime[frame_clock_anime[aCnt]], 2);
                 break;
 
             case RIGHT:
@@ -205,79 +218,48 @@ int main(void) {
 
 
             case STK_L_LEFT:
-                //WAVE
-                if (frameCount % 3 == 0) {
-                    aCnt++;
-                    if (aCnt >= sizeof (frame_wave) / sizeof (unsigned char)) {
-                        aCnt = 0;
-                    }
-                }
-                setPattern(wave[frame_wave[aCnt]], 2);
+                //5
+                setPattern(number[frame_number[5]], 2);
                 break;
 
 
-
             case STK_L_RIGHT:
-                //ENERGY
-                if (frameCount % 4 == 0) {
-                    frameCount = 0;
-                    aCnt++;
-                    if (aCnt >= sizeof (frame_energy) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_energy) / sizeof (unsigned char) - 1;
-                    }
-                }
-                setPattern(energy[frame_energy[aCnt]], 2);
+                //3
+                setPattern(number[frame_number[3]], 2);
                 break;
 
 
             case STK_L_UP:
-                //START UP
-                if (frameCount % 4 == 0) {
-                    frameCount = 0;
-                    aCnt++;
-                    if (aCnt >= sizeof (frame_startup) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_startup) / sizeof (unsigned char) - 1;
+                //2
+                setPattern(number[frame_number[2]], 2);
 
-                        //After playing, DELETE
-                        myData[0] = 0;
-                        deletePattern();
-                    }
-                }
-                setPattern(startup[frame_startup[aCnt]], 2);
                 break;
 
 
             case STK_L_DOWN:
-                //SLEEP_HEART 1
-                setPattern(sleep_heart[1], 2);
+                //4
+                setPattern(number[frame_number[4]], 2);
                 break;
 
 
-            case STK_R_LEFT:
-                //ONION
-                if (frameCount % 4 == 0) {
-                    frameCount = 0;
-                    aCnt++;
-                    if (aCnt >= sizeof (frame_onion_anime_BMP) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_onion_anime_BMP) / sizeof (unsigned char) - 1;
-                    }
-                }
-                setPattern(onion_anime_BMP[frame_onion_anime_BMP[aCnt]], 2);
+            case STK_R_LEFT:                
+                //1
+                setPattern(number[frame_number[1]], 2);
                 break;
 
             case STK_R_RIGHT:
-                //CUP
-                setPattern(cup, 2);
+                //SMALL HEART
+                setPattern(sleep_heart[frameSleepHeart_1[0]], 2);
                 break;
 
             case STK_R_UP:
-                //WAKUSEI 1
-                setPattern(wakusei_1, 2);
+                //MIDDLE HEART
+                setPattern(sleep_heart[frameSleepHeart_1[2]], 2);
                 break;
 
             case STK_R_DOWN:
-                //WAKUSEI 2
-                setPattern(wakusei_2, 2);
+                //0
+                setPattern(number[frame_number[0]], 2);
                 break;
         }
 
