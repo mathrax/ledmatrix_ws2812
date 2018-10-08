@@ -6,22 +6,12 @@
 #include "./vsc3_keyname.h"
 
 #include "./animation_data/pattern.h"       //HEART_REV, BREAK_HEART
-//#include "./animation_data/energy.h"        //ENERGY
 #include "./animation_data/broken.h"        //BROKEN
-//#include "./animation_data/normal_blink.h"  //NOAMRL_BLINK
 #include "./animation_data/startup.h"       //STARTUP
-//#include "./animation_data/wave.h"          //WAVE
 #include "./animation_data/hanabi.h"        //HANABI
 #include "./animation_data/sleep_heart.h"   //SLEEP HEART
-//#include "./animation_data/star.h"          //STAR
-//#include "./animation_data/onion.h"         //ONION
-//#include "./animation_data/wakusei.h"       //WAKUSEI
-//#include "./animation_data/cup.h"           //CUP
-#include "./animation_data/number_0-5.h"    //
-#include "./animation_data/clock_anime.h"   //
-
-
-//#include "./animation_data/shinobi_ompu_guitar_20180602.h"
+#include "./animation_data/number_0-5.h"    //0,1,2,3,4,5
+#include "./animation_data/clock_anime.h"   //RAINBOW CIRCLE
 
 unsigned char aCnt;
 unsigned char frameCount;
