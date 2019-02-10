@@ -10,8 +10,14 @@
 #include "./animation_data/startup.h"       //STARTUP
 #include "./animation_data/hanabi.h"        //HANABI
 #include "./animation_data/sleep_heart.h"   //SLEEP HEART
-#include "./animation_data/number_0-5.h"    //0,1,2,3,4,5
-#include "./animation_data/clock_anime.h"   //RAINBOW CIRCLE
+#include "./animation_data/normal_blink.h"  //NORMAL_BLINK
+#include "./animation_data/star.h"          //STAR
+
+#include "./animation_data/wave.h"          //WAVE
+#include "./animation_data/onpu_blue.h"     //ONPU_BLUE
+#include "./animation_data/onpu_pink.h"     //ONPU_PINK
+#include "./animation_data/shinobi.h"       //SHINOBI
+
 
 unsigned char aCnt;
 unsigned char frameCount;
@@ -157,14 +163,13 @@ int main(void) {
 
             case LEFT:
                 //NORMAL BLINK
-                if (frameCount % 4 == 0) {
-                    frameCount = 0;
+                if (frameCount % 16 == 0) {
                     aCnt++;
-                    if (aCnt >= sizeof (frame_clock_anime) / sizeof (unsigned char)) {
+                    if (aCnt >= sizeof (frame_normal_blink) / sizeof (unsigned char)) {
                         aCnt = 0;
                     }
                 }
-                setPattern(clock_anime[frame_clock_anime[aCnt]], 2);
+                setPattern(normal_blink[frame_normal_blink[aCnt]], 0);
                 break;
 
             case RIGHT:
@@ -208,33 +213,56 @@ int main(void) {
 
 
             case STK_L_LEFT:
-                //5
-                setPattern(number[frame_number[5]], 2);
+                //STAR
+                if (frameCount % 3 == 0) {
+                    frameCount = 0;
+
+                    aCnt++;
+                    if (aCnt >= sizeof (frame_star) / sizeof (unsigned char)) {
+                        aCnt = 0;
+                    }
+                }
+                setPattern(star[frame_star[aCnt]], 3);
                 break;
 
 
             case STK_L_RIGHT:
-                //3
-                setPattern(number[frame_number[3]], 2);
+                //SHINOBI
+                setPattern(shinobi, 2);
                 break;
 
 
             case STK_L_UP:
-                //2
-                setPattern(number[frame_number[2]], 2);
+                //WAVE
+                if (frameCount % 3 == 0) {
+                    frameCount = 0;
+
+                    aCnt++;
+                    if (aCnt >= sizeof (frame_wave) / sizeof (unsigned char)) {
+                        aCnt = 0;
+                    }
+                }
+                setPattern(wave[frame_wave[aCnt]], 2);
 
                 break;
 
 
             case STK_L_DOWN:
-                //4
-                setPattern(number[frame_number[4]], 2);
+                //ONPU_PINK
+                if (frameCount % 12 == 0) {
+                    frameCount = 0;
+                    aCnt++;
+                    if (aCnt >= sizeof (frame_onpu_pink_anime) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_onpu_pink_anime) / sizeof (unsigned char) - 1;
+                    }
+                }
+                setPattern(onpu_pink_anime[frame_onpu_pink_anime[aCnt]], 2);
                 break;
 
 
-            case STK_R_LEFT:                
-                //1
-                setPattern(number[frame_number[1]], 2);
+            case STK_R_LEFT:
+                //MIDDLE HEART
+                setPattern(sleep_heart[frameSleepHeart_1[1]], 2);
                 break;
 
             case STK_R_RIGHT:
@@ -243,13 +271,21 @@ int main(void) {
                 break;
 
             case STK_R_UP:
-                //MIDDLE HEART
-                setPattern(sleep_heart[frameSleepHeart_1[1]], 2);
+                //DELETE
+                myData[0] = 0;
+                deletePattern();
                 break;
 
             case STK_R_DOWN:
-                //0
-                setPattern(number[frame_number[0]], 2);
+                //ONPU_BLUE
+                if (frameCount % 12 == 0) {
+                    frameCount = 0;
+                    aCnt++;
+                    if (aCnt >= sizeof (frame_onpu_blue_anime) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_onpu_blue_anime) / sizeof (unsigned char) - 1;
+                    }
+                }
+                setPattern(onpu_blue_anime[frame_onpu_blue_anime[aCnt]], 2);
                 break;
         }
 
