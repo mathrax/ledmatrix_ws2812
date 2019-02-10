@@ -52,6 +52,9 @@
         <itemPath>animation_data/cup.h</itemPath>
         <itemPath>animation_data/clock_anime.h</itemPath>
         <itemPath>animation_data/number_0-5.h</itemPath>
+        <itemPath>animation_data/onpu_blue.h</itemPath>
+        <itemPath>animation_data/onpu_pink.h</itemPath>
+        <itemPath>animation_data/shinobi.h</itemPath>
       </logicalFolder>
       <itemPath>user.h</itemPath>
       <itemPath>vsc3_keyname.h</itemPath>
@@ -282,6 +285,7 @@
         <property key="UART1" value="true"/>
         <property key="UART2" value="true"/>
         <property key="USB" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
