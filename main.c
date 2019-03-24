@@ -17,6 +17,7 @@
 #include "./animation_data/onpu_blue.h"     //ONPU_BLUE
 #include "./animation_data/onpu_pink.h"     //ONPU_PINK
 #include "./animation_data/shinobi.h"       //SHINOBI
+#include "./animation_data/dokuro.h"        //DOKURO
 
 
 unsigned char aCnt;
@@ -227,8 +228,8 @@ int main(void) {
 
 
             case STK_L_RIGHT:
-                //SHINOBI
-                setPattern(shinobi, 2);
+                //DOKURO
+                setPattern(dokuro, 2);
                 break;
 
 

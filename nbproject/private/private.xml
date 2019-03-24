@@ -5,6 +5,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/MATHRAX/Documents/GitHub/ledmatrix_ws2812/main.c</file>
+            <file>file:/Users/MATHRAX/Documents/GitHub/ledmatrix_ws2812/animation_data/onpu_blue.h</file>
+            <file>file:/Users/MATHRAX/Documents/GitHub/ledmatrix_ws2812/animation_data/star.h</file>
+            <file>file:/Users/MATHRAX/Documents/GitHub/ledmatrix_ws2812/animation_data/onpu_pink.h</file>
         </group>
     </open-files>
 </project-private>

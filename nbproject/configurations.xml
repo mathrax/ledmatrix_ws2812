@@ -55,6 +55,7 @@
         <itemPath>animation_data/onpu_blue.h</itemPath>
         <itemPath>animation_data/onpu_pink.h</itemPath>
         <itemPath>animation_data/shinobi.h</itemPath>
+        <itemPath>animation_data/dokuro.h</itemPath>
       </logicalFolder>
       <itemPath>user.h</itemPath>
       <itemPath>vsc3_keyname.h</itemPath>
