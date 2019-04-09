@@ -14,9 +14,8 @@
 #include "./animation_data/star.h"          //STAR
 
 #include "./animation_data/wave.h"          //WAVE
-#include "./animation_data/onpu_blue.h"     //ONPU_BLUE
-#include "./animation_data/onpu_pink.h"     //ONPU_PINK
-#include "./animation_data/shinobi.h"       //SHINOBI
+#include "./animation_data/fire.h"          //FIRE
+#include "./animation_data/energy.h"        //ENERGY
 #include "./animation_data/dokuro.h"        //DOKURO
 
 
@@ -249,15 +248,8 @@ int main(void) {
 
 
             case STK_L_DOWN:
-                //ONPU_PINK
-                if (frameCount % 12 == 0) {
-                    frameCount = 0;
-                    aCnt++;
-                    if (aCnt >= sizeof (frame_onpu_pink_anime) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_onpu_pink_anime) / sizeof (unsigned char) - 1;
-                    }
-                }
-                setPattern(onpu_pink_anime[frame_onpu_pink_anime[aCnt]], 2);
+                //FIRE
+                setPattern(fire, 2);
                 break;
 
 
@@ -278,15 +270,15 @@ int main(void) {
                 break;
 
             case STK_R_DOWN:
-                //ONPU_BLUE
-                if (frameCount % 12 == 0) {
+                //ENERGY
+                if (frameCount % 3 == 0) {
                     frameCount = 0;
                     aCnt++;
-                    if (aCnt >= sizeof (frame_onpu_blue_anime) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_onpu_blue_anime) / sizeof (unsigned char) - 1;
+                    if (aCnt >= sizeof (frame_energy) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_energy) / sizeof (unsigned char) - 1;
                     }
                 }
-                setPattern(onpu_blue_anime[frame_onpu_blue_anime[aCnt]], 2);
+                setPattern(energy[frame_energy[aCnt]], 2);
                 break;
         }
 
