@@ -1,4 +1,6 @@
+
 #include <plib.h>
+
 #include <stdlib.h>
 
 #include "./user.h"
@@ -17,6 +19,7 @@
 #include "./animation_data/fire.h"          //FIRE
 #include "./animation_data/energy.h"        //ENERGY
 #include "./animation_data/dokuro.h"        //DOKURO
+#include "./animation_data/kiba.h"        //KIBA
 
 
 unsigned char aCnt;
@@ -62,7 +65,8 @@ void __ISR(_UART_1_VECTOR, IPL4) U1RXHandler(void) {
             if (lastData != RcvData) {
                 myData[dataPos] = RcvData;
 
-                if (RcvData == UP
+                if (       
+                        RcvData == UP
                         || RcvData == DOWN
                         || RcvData == LEFT
                         || RcvData == RIGHT
@@ -85,6 +89,11 @@ void __ISR(_UART_1_VECTOR, IPL4) U1RXHandler(void) {
                 } else {
                     deletePattern();
                 }
+            }else if(
+                    RcvData == STK_L_DOWN){
+                    frameCount = 0;
+                    aCnt = 0;
+               
             }
             dataPos++;
 
@@ -228,7 +237,7 @@ int main(void) {
 
             case STK_L_RIGHT:
                 //DOKURO
-                setPattern(dokuro, 2);
+                setPattern(dokuro, 3);
                 break;
 
 
@@ -248,8 +257,16 @@ int main(void) {
 
 
             case STK_L_DOWN:
-                //FIRE
-                setPattern(fire, 2);
+                //KIBA
+                if (frameCount % 4 == 0) {
+                    frameCount = 0;
+
+                    aCnt++;
+                    if (aCnt >= sizeof (frame_kiba) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_kiba) / sizeof (unsigned char) - 1;
+                    }
+                }
+                setPattern(kiba[frame_kiba[aCnt]], 3);
                 break;
 
 

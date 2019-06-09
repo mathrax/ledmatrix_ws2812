@@ -4,7 +4,7 @@
  *
  * Created on December 3, 2016, 4:14 PM
  */
-#include <plib.h>
+#include <lega-c/plib.h>
 #include <stdio.h>
 #include <stdlib.h>
 
