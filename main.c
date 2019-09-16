@@ -19,7 +19,8 @@
 #include "./animation_data/fire.h"          //FIRE
 #include "./animation_data/energy.h"        //ENERGY
 #include "./animation_data/dokuro.h"        //DOKURO
-#include "./animation_data/kiba.h"        //KIBA
+#include "./animation_data/kiba.h"          //KIBA
+#include "./animation_data/koma.h"          //KOMA
 
 
 unsigned char aCnt;
@@ -257,16 +258,16 @@ int main(void) {
 
 
             case STK_L_DOWN:
-                //KIBA
+                //KOMA
                 if (frameCount % 4 == 0) {
                     frameCount = 0;
 
                     aCnt++;
-                    if (aCnt >= sizeof (frame_kiba) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_kiba) / sizeof (unsigned char) - 1;
+                    if (aCnt >= sizeof (frame_koma) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_koma) / sizeof (unsigned char) - 1;
                     }
                 }
-                setPattern(kiba[frame_kiba[aCnt]], 3);
+                setPattern(koma[frame_koma[aCnt]], 3);
                 break;
 
 
