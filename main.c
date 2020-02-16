@@ -18,9 +18,11 @@
 #include "./animation_data/wave.h"          //WAVE
 #include "./animation_data/fire.h"          //FIRE
 #include "./animation_data/energy.h"        //ENERGY
-#include "./animation_data/dokuro.h"        //DOKURO
-#include "./animation_data/kiba.h"          //KIBA
-#include "./animation_data/koma.h"          //KOMA
+//#include "./animation_data/dokuro.h"      //DOKURO
+//#include "./animation_data/kiba.h"        //KIBA
+//#include "./animation_data/koma.h"        //KOMA
+#include "./animation_data/ring_kushami.h"  //KUSHAMI
+#include "./animation_data/sunadokei.h"     //SUMADOKEI
 
 
 unsigned char aCnt;
@@ -66,7 +68,7 @@ void __ISR(_UART_1_VECTOR, IPL4) U1RXHandler(void) {
             if (lastData != RcvData) {
                 myData[dataPos] = RcvData;
 
-                if (       
+                if (
                         RcvData == UP
                         || RcvData == DOWN
                         || RcvData == LEFT
@@ -90,11 +92,11 @@ void __ISR(_UART_1_VECTOR, IPL4) U1RXHandler(void) {
                 } else {
                     deletePattern();
                 }
-            }else if(
-                    RcvData == STK_L_DOWN){
-                    frameCount = 0;
-                    aCnt = 0;
-               
+//            } else if (
+//                    RcvData == STK_L_DOWN) {
+//                frameCount = 0;
+//                aCnt = 0;
+
             }
             dataPos++;
 
@@ -195,8 +197,6 @@ int main(void) {
                 setPattern(broken[frame_broken[aCnt]], 2);
                 break;
 
-
-
             case BATSU:
                 //DELETE
                 myData[0] = 0;
@@ -223,22 +223,26 @@ int main(void) {
 
 
             case STK_L_LEFT:
-                //STAR
-                if (frameCount % 3 == 0) {
+                //KUSHAMI NORMAL
+                if (frameCount % 4 == 0) {
                     frameCount = 0;
 
                     aCnt++;
-                    if (aCnt >= sizeof (frame_star) / sizeof (unsigned char)) {
-                        aCnt = 0;
+                    if (aCnt >= sizeof (frame_kusyami_bmp) / sizeof (unsigned char)) {
+                        aCnt = sizeof (frame_kusyami_bmp) / sizeof (unsigned char) - 1;
+                        myData[0] = 0;
+                        deletePattern();
                     }
                 }
-                setPattern(star[frame_star[aCnt]], 3);
+                setPattern(kusyami_bmp[frame_kusyami_bmp[aCnt]], 3);
                 break;
 
 
             case STK_L_RIGHT:
-                //DOKURO
-                setPattern(dokuro, 3);
+                //NOTHING
+                myData[0] = 0;
+                deletePattern();
+
                 break;
 
 
@@ -258,36 +262,6 @@ int main(void) {
 
 
             case STK_L_DOWN:
-                //KOMA
-                if (frameCount % 4 == 0) {
-                    frameCount = 0;
-
-                    aCnt++;
-                    if (aCnt >= sizeof (frame_koma) / sizeof (unsigned char)) {
-                        aCnt = sizeof (frame_koma) / sizeof (unsigned char) - 1;
-                    }
-                }
-                setPattern(koma[frame_koma[aCnt]], 3);
-                break;
-
-
-            case STK_R_LEFT:
-                //MIDDLE HEART
-                setPattern(sleep_heart[frameSleepHeart_1[1]], 2);
-                break;
-
-            case STK_R_RIGHT:
-                //SMALL HEART
-                setPattern(sleep_heart[frameSleepHeart_1[2]], 2);
-                break;
-
-            case STK_R_UP:
-                //DELETE
-                myData[0] = 0;
-                deletePattern();
-                break;
-
-            case STK_R_DOWN:
                 //ENERGY
                 if (frameCount % 3 == 0) {
                     frameCount = 0;
@@ -297,6 +271,31 @@ int main(void) {
                     }
                 }
                 setPattern(energy[frame_energy[aCnt]], 2);
+                break;
+
+
+            case STK_R_LEFT:
+
+                //SUNADOKEI 2
+                setPattern(sunadokei[2], 3);
+                break;
+
+            case STK_R_RIGHT:
+
+                //SUNADOKEI 0
+                setPattern(sunadokei[0], 3);
+                break;
+
+            case STK_R_UP:
+
+                //SUNADOKEI 3
+                setPattern(sunadokei[3], 3);
+                break;
+
+            case STK_R_DOWN:
+
+                //SUNADOKEI 1
+                setPattern(sunadokei[1], 3);
                 break;
         }
 
